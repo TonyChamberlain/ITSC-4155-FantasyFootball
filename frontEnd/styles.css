@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 1em;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2em;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.temp {
+    text-align: center;
+    padding: 2em;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.search-form input {
+    padding: 0.5em;
+    width: 300px;
+}
+
+.search-form button {
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.results {
+    background: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.team-roster ul {
+    list-style: none;
+    background: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background: #222;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}  
