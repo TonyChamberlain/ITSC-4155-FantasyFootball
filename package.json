@@ -1,0 +1,19 @@
+{
+  "name": "itsc-4155",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000I\u0000T\u0000S\u0000C\u0000-\u00004\u00001\u00005\u00005\u0000-\u0000F\u0000a\u0000n\u0000t\u0000a\u0000s\u0000y\u0000F\u0000o\u0000o\u0000t\u0000b\u0000a\u0000l\u0000l\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
