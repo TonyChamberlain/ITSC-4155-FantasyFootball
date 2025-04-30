@@ -18,17 +18,37 @@
 
     <main>
         <section class="team-roster">
-        <h2>Starting Lineup</h2>
-        <ul>
-            <li>QB: Placeholder Player</li>
-            <li>RB: Placeholder Player</li>
-            <li>WR: Placeholder Player</li>
-        </ul>
+            <h2>Starting Lineup</h2>
+            <ul id="starter-list">
+                <li>QB: <span data-pos="QB">Empty</span></li>
+                <li>RB1: <span data-pos="RB1">Empty</span></li>
+                <li>RB2: <span data-pos="RB2">Empty</span></li>
+                <li>WR1: <span data-pos="WR1">Empty</span></li>
+                <li>WR2: <span data-pos="WR2">Empty</span></li>
+                <li>TE: <span data-pos="TE">Empty</span></li>
+                <li>FLEX: <span data-pos="FLEX">Empty</span></li>
+                <li>K: <span data-pos="K">Empty</span></li>
+                <li>DEF: <span data-pos="DEF">Empty</span></li>
+            </ul>
+
+            <h2>Bench</h2>
+            <ul id="bench-list">
+                <li>QB2: <span data-pos="QB2">Empty</span></li>
+                <li>RB3: <span data-pos="RB3">Empty</span></li>
+                <li>WR3: <span data-pos="WR3">Empty</span></li>
+                <li>TE2: <span data-pos="TE2">Empty</span></li>
+                <li>FLEX2: <span data-pos="FLEX2">Empty</span></li>
+                <li>Fill1: <span data-pos="Fill1">Empty</span></li>
+                <li>Fill2: <span data-pos="Fill2">Empty</span></li>
+            </ul>
+
+            <h3>Total Points (Starters Only): <span id="total-points">0</span></h3>
         </section>
     </main>
 
     <footer>
         &copy; 2025 Fantasy Football Central
     </footer>
+    <script src="team.js"></script>
 </body>
 </html>
