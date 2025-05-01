@@ -131,12 +131,12 @@ def fetch_players_from_league(session, league_key, team_filter=None, position_fi
         try:
             league_data = data["fantasy_content"]["league"]
             if len(league_data) < 2 or "players" not in league_data[1]:
-                print("✅ Reached end of player list.")
+                print(" Reached end of player list.")
                 break
 
             players = league_data[1]["players"]
             if not any(k.isdigit() for k in players):
-                print("✅ No more digit-keyed players — done.")
+                print(" No more digit-keyed players — done.")
                 break
 
             for key in players:
@@ -187,13 +187,13 @@ def fetch_players_from_league(session, league_key, team_filter=None, position_fi
             pretty(data)
             break
 
-    print(f"\n👥 Players in League {league_key} (Grouped by Position):\n{'='*60}")
+    print(f"\n Players in League {league_key} (Grouped by Position):\n{'='*60}")
     if not categorized:
         print("No players match the specified filter.\n")
         return
 
     for position in sorted(categorized):
-        print(f"\n🔸 Position: {position}\n{'-'*40}")
+        print(f"\n Position: {position}\n{'-'*40}")
         for player in categorized[position]:
             print(f"{player['name']} – {player['team']} | #: {player['uniform_number']}")
             print(f"  Total: {player['points']}, Average: {player['overall_avg']}, Last 5 Week Avg: {player['last5_avg']}")
@@ -224,7 +224,7 @@ def main():
         sc.refresh_access_token()
     session = sc.session
 
-    print("🎯 Fetching Game Keys")
+    print(" Fetching Game Keys")
     game_keys = fetch_available_game_keys(session)
 
     # === TEAM SELECTION PROMPT ===
@@ -237,7 +237,7 @@ def main():
     try:
         team_choice = int(input("\nEnter team number to filter by (0 to skip): ").strip())
     except ValueError:
-        print("⚠️ Invalid input. No team filter will be applied.")
+        print(" Invalid input. No team filter will be applied.")
         team_choice = 0
 
     team_filter = None
@@ -245,7 +245,7 @@ def main():
         team_filter = teams[team_choice - 1][1]
         print(f" Team filter set to: {teams[team_choice - 1][0].title()} ({team_filter})")
     elif team_choice != 0:
-        print("⚠️ Invalid number. No team filter will be applied.")
+        print(" Invalid number. No team filter will be applied.")
 
     # === POSITION FILTER PROMPT ===
     position_filter = input("Enter a position to filter by (e.g., QB, RB, WR), or leave blank: ").strip()
