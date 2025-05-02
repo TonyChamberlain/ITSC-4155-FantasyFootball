@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Charlotte Fantasy Football Manager</title>
-  <!-- still served from /styles.css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <script defer src="{{ url_for('static', filename='home.js') }}"></script>
 </head>
 <body>
   <header>
@@ -17,27 +17,46 @@
     </nav>
   </header>
 
-  <main class="hero">
-    <h2>Build Your Championship Roster</h2>
-    <p>Sign up or log in to draft, manage, and dominate your fantasy league.</p>
+  <main>
+    <section class="head">
+      <h2>Welcome to Fantasy Football Central</h2>
+      <p>Create, manage, and dominate your fantasy football league!</p>
+    </section>
 
-    {% if not user %}
-      <div class="cta-buttons">
-        <a href="/signup.html" class="btn btn-primary">Sign Up</a>
-        <a href="/login.html" class="btn btn-secondary">Log In</a>
+    <section class="features">
+      <div class="feature-card">
+        <h3>🔍 Player Search</h3>
+        <p>Filter to find your perfect player</p>
       </div>
-    {% else %}
-      <div class="cta-buttons">
-        <form action="/logout" method="get">
-          <button type="submit" class="btn btn-secondary">Sign Out</button>
+      <div class="feature-card">
+        <h3>📊 Live Data</h3>
+        <p>Yahoo API integration for real-time stats</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏆 Team Builder</h3>
+        <p>Optimize your lineup with AI suggestions</p>
+      </div>
+    </section>
+
+    <div class="cta-buttons">
+      {% if not user %}
+        <a href="/login.html"  class="cta-primary">Log In</a>
+        <a href="/signup.html" class="cta-secondary">Sign Up</a>
+      {% else %}
+        <form action="/logout" method="get" style="display:inline-block;">
+          <button type="submit" class="cta-primary">Sign Out</button>
         </form>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
 
+    <section class="trending">
+      <h2>🔥 Trending This Week</h2>
+      <div id="trending-players" class="trending-players-container"></div>
+    </section>
   </main>
 
-<footer>
+  <footer>
     &copy; 2025 Charlotte Fantasy Football Manager
-</footer>
+  </footer>
 </body>
 </html>

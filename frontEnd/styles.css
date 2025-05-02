@@ -9,6 +9,7 @@ body {
     background: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 header {
@@ -32,7 +33,119 @@ main {
     padding: 2em;
     max-width: 1000px;
     margin: auto;
+    padding-bottom: 4rem;
 }
+
+.head {
+    text-align: center;
+    padding: 2em;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.feature-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.cta-primary {
+    background: #4CAF50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    border: 2px solid transparent;
+}
+.cta-primary:hover {
+    background: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-secondary {
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.cta-secondary:hover {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-primary:active, 
+.cta-secondary:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.trending {
+    margin-bottom: 3rem;
+}
+
+.trending h2 {
+    margin-bottom: 1.5rem; 
+}
+
+.trending-players-container {
+    margin-top: 1rem;
+}
+
+.trending-players {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.trending-player {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-meta {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.player-points {
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.player-points.up { color: #4CAF50; }
+.player-points.down { color: #f44336; }
+.player-points.new { color: #2196F3; }
 
 .temp {
     text-align: center;
@@ -87,9 +200,10 @@ footer {
     padding: 1em;
     background: #222;
     color: white;
-    position: fixed;
+    position: static;
     bottom: 0;
     width: 100%;
+    margin-top: 3rem;
 }  
 
 .auth-form {
