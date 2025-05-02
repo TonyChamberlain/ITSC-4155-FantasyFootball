@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charlotte Fantasy Football Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <script defer src="{{ url_for('static', filename='home.js') }}"></script>
+</head>
+<body>
+  <header>
+    <h1>Charlotte Fantasy Football Manager</h1>
+    <nav>
+      <a href="/" class="active">Home</a>
+      <a href="/search.html">Search</a>
+      <a href="/team.html">My Team</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="head">
+      <h2>Welcome to Fantasy Football Central</h2>
+      <p>Create, manage, and dominate your fantasy football league!</p>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <h3>🔍 Player Search</h3>
+        <p>Filter to find your perfect player</p>
+      </div>
+      <div class="feature-card">
+        <h3>📊 Live Data</h3>
+        <p>Yahoo API integration for real-time stats</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏆 Team Builder</h3>
+        <p>Optimize your lineup with AI suggestions</p>
+      </div>
+    </section>
+
+    <div class="cta-buttons">
+      {% if not user %}
+        <a href="/login.html"  class="cta-primary">Log In</a>
+        <a href="/signup.html" class="cta-secondary">Sign Up</a>
+      {% else %}
+        <form action="/logout" method="get" style="display:inline-block;">
+          <button type="submit" class="cta-primary">Sign Out</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <section class="trending">
+      <h2>🔥 Trending This Week</h2>
+      <div id="trending-players" class="trending-players-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Charlotte Fantasy Football Manager
+  </footer>
+</body>
+</html>
