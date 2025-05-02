@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from flask import Flask, request, redirect, session, send_from_directory, g, url_for
+from flask import Flask, request, redirect, session, send_from_directory, g, url_for, render_template
 from flask_bcrypt import Bcrypt
 from flask_session import Session
 
@@ -9,12 +9,28 @@ FRONTEND_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'frontend'))
 DB_PATH = os.path.join(BASE_DIR, 'users.db')
 
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
-# Remember to come back and do this
-app.secret_key = 'replace-with-a-strong-random-key'
+app.secret_key = 'FantasyManager89321'
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 bcrypt = Bcrypt(app)
 
+@app.before_request
+def require_login():
+    PUBLIC = {
+        '/',
+        '/index.html',
+        '/login.html',
+        '/signup.html',
+        '/login',
+        '/signup'
+    }
+    ALLOWED_EXT = ('.css', '.js', '.png', '.jpg', '.jpeg',)
+
+    path = request.path
+    if path in PUBLIC or path.endswith(ALLOWED_EXT):
+        return
+    if 'user' not in session:
+        return redirect('/login.html')
 
 def get_db():
     db = getattr(g, '_db', None)
@@ -37,7 +53,7 @@ def close_db(_):
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return render_template('index.html',user=session.get('user'))
 
 @app.route('/<path:filename>')
 def static_proxy(filename):

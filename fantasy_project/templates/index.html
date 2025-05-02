@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charlotte Fantasy Football Manager</title>
+  <!-- still served from /styles.css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Charlotte Fantasy Football Manager</h1>
+    <nav>
+      <a href="/" class="active">Home</a>
+      <a href="/search.html">Search</a>
+      <a href="/team.html">My Team</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h2>Build Your Championship Roster</h2>
+    <p>Sign up or log in to draft, manage, and dominate your fantasy league.</p>
+
+    {% if not user %}
+      <div class="cta-buttons">
+        <a href="/signup.html" class="btn btn-primary">Sign Up</a>
+        <a href="/login.html" class="btn btn-secondary">Log In</a>
+      </div>
+    {% else %}
+      <div class="cta-buttons">
+        <form action="/logout" method="get">
+          <button type="submit" class="btn btn-secondary">Sign Out</button>
+        </form>
+      </div>
+    {% endif %}
+
+  </main>
+
+<footer>
+    &copy; 2025 Charlotte Fantasy Football Manager
+</footer>
+</body>
+</html>
