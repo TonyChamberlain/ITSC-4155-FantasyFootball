@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.db
+users.db
+oauth2.json
+.env
+flask_session/
+venv/
+env/
+.venv/
+.vscode/
+.idea/
+.DS_Store
+.pytest_cache/
+*.log
+*.tmp
