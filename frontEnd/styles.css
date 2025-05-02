@@ -30,6 +30,7 @@ header nav a:hover {
 }
 
 main {
+    flex: 1;
     padding: 2em;
     max-width: 1000px;
     margin: auto;
@@ -45,9 +46,10 @@ main {
 
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 2rem 0;
+    width: 100%;
 }
 .feature-card {
     background: white;
@@ -143,7 +145,6 @@ main {
     margin-left: 1rem;
 }
 
-/* Trend colors */
 .player-points.up { color: #4CAF50; }
 .player-points.down { color: #f44336; }
 .player-points.new { color: #2196F3; }
@@ -187,6 +188,60 @@ main {
 
 .team-roster span {
     font-weight: bold;
+}
+
+body.dark-mode {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .head {
+    background: #333;
+    color: #eee;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background: #000;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .trending-player,
+body.dark-mode .team-roster ul,
+body.dark-mode .results {
+    background: #222;
+    color: #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .player-meta,
+body.dark-mode .search-form input {
+    color: #aaa;
+    background: #333;
+}
+
+body.dark-mode .search-form input::placeholder {
+    color: #777;
+}
+
+#dark-mode-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.head, .feature-card {
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 footer {

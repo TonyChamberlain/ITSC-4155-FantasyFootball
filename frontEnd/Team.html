@@ -5,50 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Fantasy Team</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="darkMode.js"></script>
 </head>
 <body>
-    <header>
-        <h1>My Fantasy Team</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="search.html">Search</a>
-            <a href="team.html">My Team</a>
-        </nav>
-    </header>
+    <div class="page-wrapper">
+        <header>
+            <h1>My Fantasy Team</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="team.html">My Team</a>
+                <button id="dark-mode-toggle">🌙</button>
+            </nav>
+        </header>
 
-    <main>
-        <section class="team-roster">
-            <h2>Starting Lineup</h2>
-            <ul id="starter-list">
-                <li>QB: <span data-pos="QB">Empty</span></li>
-                <li>RB1: <span data-pos="RB1">Empty</span></li>
-                <li>RB2: <span data-pos="RB2">Empty</span></li>
-                <li>WR1: <span data-pos="WR1">Empty</span></li>
-                <li>WR2: <span data-pos="WR2">Empty</span></li>
-                <li>TE: <span data-pos="TE">Empty</span></li>
-                <li>FLEX: <span data-pos="FLEX">Empty</span></li>
-                <li>K: <span data-pos="K">Empty</span></li>
-                <li>DEF: <span data-pos="DEF">Empty</span></li>
-            </ul>
+        <main>
+            <section class="team-roster">
+                <h2>Starting Lineup</h2>
+                <ul id="starter-list">
+                    <li>QB: <span data-pos="QB">Empty</span></li>
+                    <li>RB1: <span data-pos="RB1">Empty</span></li>
+                    <li>RB2: <span data-pos="RB2">Empty</span></li>
+                    <li>WR1: <span data-pos="WR1">Empty</span></li>
+                    <li>WR2: <span data-pos="WR2">Empty</span></li>
+                    <li>TE: <span data-pos="TE">Empty</span></li>
+                    <li>FLEX: <span data-pos="FLEX">Empty</span></li>
+                    <li>K: <span data-pos="K">Empty</span></li>
+                    <li>DEF: <span data-pos="DEF">Empty</span></li>
+                </ul>
 
-            <h2>Bench</h2>
-            <ul id="bench-list">
-                <li>QB2: <span data-pos="QB2">Empty</span></li>
-                <li>RB3: <span data-pos="RB3">Empty</span></li>
-                <li>WR3: <span data-pos="WR3">Empty</span></li>
-                <li>TE2: <span data-pos="TE2">Empty</span></li>
-                <li>FLEX2: <span data-pos="FLEX2">Empty</span></li>
-                <li>Fill1: <span data-pos="Fill1">Empty</span></li>
-                <li>Fill2: <span data-pos="Fill2">Empty</span></li>
-            </ul>
+                <h2>Bench</h2>
+                <ul id="bench-list">
+                    <li>QB2: <span data-pos="QB2">Empty</span></li>
+                    <li>RB3: <span data-pos="RB3">Empty</span></li>
+                    <li>WR3: <span data-pos="WR3">Empty</span></li>
+                    <li>TE2: <span data-pos="TE2">Empty</span></li>
+                    <li>FLEX2: <span data-pos="FLEX2">Empty</span></li>
+                    <li>Fill1: <span data-pos="Fill1">Empty</span></li>
+                    <li>Fill2: <span data-pos="Fill2">Empty</span></li>
+                </ul>
 
-            <h3>Total Points (Starters Only): <span id="total-points">0</span></h3>
-        </section>
-    </main>
+                <h3>Total Points (Starters Only): <span id="total-points">0</span></h3>
+            </section>
+        </main>
 
-    <footer>
-        &copy; 2025 Fantasy Football Central
-    </footer>
-    <script src="team.js"></script>
+        <footer>
+            &copy; 2025 Fantasy Football Central
+        </footer>
+        <script src="team.js"></script>
+    </div>
 </body>
 </html>

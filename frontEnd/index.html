@@ -6,52 +6,56 @@
     <title>Fantasy Football - Home</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="home.js"></script>
+    <script src="darkMode.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Fantasy Football Central</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="search.html">Search</a>
-            <a href="team.html">My Team</a>
-        </nav>
-    </header>
+    <div class="page-wrapper">
+        <header>
+            <h1>Fantasy Football Central</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="team.html">My Team</a>
+                <button id="dark-mode-toggle">🌙</button>
+            </nav>
+        </header>
 
-    <main>
-        <section class="head">
-        <h2>Welcome to Fantasy Football Central</h2>
-        <p>Create, manage, and dominate your fantasy football league!</p>
-        </section>
+        <main>
+            <section class="head">
+            <h2>Welcome to Fantasy Football Central</h2>
+            <p>Create, manage, and dominate your fantasy football league!</p>
+            </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <h3>🔍 Player Search</h3>
-                <p>Filter to find your perfect player</p>
+            <section class="features">
+                <div class="feature-card">
+                    <h3>🔍 Player Search</h3>
+                    <p>Filter to find your perfect player</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Live Data</h3>
+                    <p>Yahoo API integration for real-time stats</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏆 Team Builder</h3>
+                    <p>Optimize your lineup with AI suggestions</p>
+                </div>
+            </section>
+
+            <div class="cta-buttons">
+                <a href="search.html" class="cta-primary">Start Searching Players</a>
+                <a href="team.html" class="cta-secondary">View My Team</a>
             </div>
-            <div class="feature-card">
-                <h3>📊 Live Data</h3>
-                <p>Yahoo API integration for real-time stats</p>
-            </div>
-            <div class="feature-card">
-                <h3>🏆 Team Builder</h3>
-                <p>Optimize your lineup with AI suggestions</p>
-            </div>
-        </section>
 
-        <div class="cta-buttons">
-            <a href="search.html" class="cta-primary">Start Searching Players</a>
-            <a href="team.html" class="cta-secondary">View My Team</a>
-        </div>
+            <section class="trending">
+                <h2>🔥 Trending This Week</h2>
+                <div class="trending-players-container" id="trending-players"></div>
+            </section>
 
-        <section class="trending">
-            <h2>🔥 Trending This Week</h2>
-            <div class="trending-players-container" id="trending-players"></div>
-        </section>
+        </main>
 
-    </main>
-
-    <footer>
-        &copy; 2025 Fantasy Football Central
-    </footer>
+        <footer>
+            &copy; 2025 Fantasy Football Central
+        </footer>
+    </div>
 </body>
 </html>
