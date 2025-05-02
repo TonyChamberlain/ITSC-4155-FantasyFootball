@@ -6,14 +6,16 @@
   <title>Charlotte Fantasy Football Manager</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   <script defer src="{{ url_for('static', filename='home.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='darkmode.js') }}"></script>
 </head>
 <body>
   <header>
-    <h1>Charlotte Fantasy Football Manager</h1>
+    <h1>Charlotte Fantasy Football Central</h1>
     <nav>
       <a href="/" class="active">Home</a>
       <a href="/search.html">Search</a>
       <a href="/team.html">My Team</a>
+      <button id="dark-mode-toggle">🌙</button>
     </nav>
   </header>
 
