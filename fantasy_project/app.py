@@ -1,8 +1,9 @@
 import os
 import sqlite3
-from flask import Flask, request, redirect, session, send_from_directory, g, url_for, render_template
+from flask import Flask, request, redirect, session, send_from_directory, g, url_for, render_template, jsonify
 from flask_bcrypt import Bcrypt
 from flask_session import Session
+from yahoo_api import get_all_players
 
 BASE_DIR = os.path.dirname(__file__)
 FRONTEND_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'frontend'))
@@ -111,6 +112,18 @@ def login_required(f):
 @login_required
 def team():
     return app.send_static_file('team.html')
+
+@app.route('/api/search')
+@login_required
+def api_search():
+    q = request.args.get('q','').lower()
+    post = request.args.get('pos')
+    team = request.args.get('team')
+    pos = request.args.get('pos')
+    players = get_all_players(team_filter=team, position_filter=pos)
+    if q:
+        players = [p for p in players if q in p['name'].lower()]
+    return jsonify(players)
 
 if __name__ == '__main__':
     print("Serving frontend from: ", FRONTEND_DIR)
