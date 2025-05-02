@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask, request, redirect, session, send_from_directory, g, url_for, render_template, jsonify
 from flask_bcrypt import Bcrypt
 from flask_session import Session
+import json
 from yahoo_api import get_all_players
 
 BASE_DIR = os.path.dirname(__file__)
@@ -44,6 +45,13 @@ def get_db():
             pw_hash TEXT NOT NULL
             )'''
         )
+        db.execute(
+            '''CREATE TABLE IF NOT EXISTS teams (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            roster TEXT NOT NULL
+            )'''
+        )
     return db
 
 @app.teardown_appcontext
@@ -55,10 +63,6 @@ def close_db(_):
 @app.route('/')
 def index():
     return render_template('index.html',user=session.get('user'))
-
-@app.route('/<path:filename>')
-def static_proxy(filename):
-    return app.send_static_file(filename)
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -124,6 +128,49 @@ def api_search():
     if q:
         players = [p for p in players if q in p['name'].lower()]
     return jsonify(players)
+
+@app.route('/api/teams', methods=['GET'])
+def api_get_teams():
+    rows = get_db().execute('SELECT id,name FROM teams').fetchall()
+    return jsonify([{'id':r[0],'name':r[1]} for r in rows])
+
+@app.route('/api/teams', methods=['POST'])
+def api_create_team():
+    data = request.get_json()
+    name = data.get('name')
+    if not name:
+        return jsonify(error='Name required'), 400
+    roster = {'bench': [None]*7}
+    cur = get_db().execute(
+        'INSERT INTO teams (name, roster) VALUES (?,?)', (name, json.dumps(roster))
+    )
+    get_db().commit()
+    return jsonify(id=cur.lastrowid, name=name), 201
+
+@app.route('/api/teams/<int:team_id>', methods=['GET'])
+def api_get_team(team_id):
+    row = get_db().execute(
+        'SELECT roster FROM teams Where id=?', (team_id,)
+    ).fetchone()
+    if not row:
+        return jsonify(error='Team not found'), 404
+    return jsonify(json.loads(row[0]))
+
+@app.route('/api/teams/<int:team_id>', methods=['PUT'])
+def api_update_team(team_id):
+    data = request.get_json()
+    roster = data.get('roster')
+    if roster is None:
+        return jsonify(error='Roster required'), 400
+    get_db().execute(
+        'UPDATE teams Set roster=? WHERE id=?', (json.dumps(roster), team_id)
+    )
+    get_db().commit()
+    return jsonify(success=True)
+
+@app.route('/<path:filename>')
+def static_proxy(filename):
+    return app.send_static_file(filename)
 
 if __name__ == '__main__':
     print("Serving frontend from: ", FRONTEND_DIR)
