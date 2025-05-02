@@ -1,0 +1,80 @@
+<script>
+    document.querySelector('.search-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        
+        const query = document.querySelector('input[type="text"]').value.trim().toLowerCase();
+        const resultsSection = document.querySelector('.results');
+        resultsSection.innerHTML = "<p>Loading...</p>";
+    
+        
+        let team = null;
+        let position = null;
+    
+        
+        const teamMap = {
+            "arizona": "ARI", "atlanta": "ATL", "baltimore": "BAL", "buffalo": "BUF",
+            "carolina": "CAR", "chicago": "CHI", "cincinnati": "CIN", "cleveland": "CLE",
+            "dallas": "DAL", "denver": "DEN", "detroit": "DET", "green bay": "GB",
+            "houston": "HOU", "indianapolis": "IND", "jacksonville": "JAX", "kansas city": "KC",
+            "vegas": "LV", "chargers": "LAC", "rams": "LAR", "miami": "MIA",
+            "minnesota": "MIN", "patriots": "NE", "saints": "NO", "giants": "NYG",
+            "jets": "NYJ", "eagles": "PHI", "steelers": "PIT", "49ers": "SF",
+            "seattle": "SEA", "tampa": "TB", "titans": "TEN", "washington": "WAS"
+        };
+    
+        for (let key in teamMap) {
+            if (query.includes(key)) {
+                team = teamMap[key];
+                break;
+            }
+        }
+    
+        
+        if (query.match(/\b(qb|rb|wr|te|k|def)\b/)) {
+            position = query.toUpperCase();
+        }
+    
+        let apiUrl = "/api/players";
+        const params = new URLSearchParams();
+        if (team) params.append("team", team);
+        if (position) params.append("position", position);
+        if (params.toString()) apiUrl += "?" + params.toString();
+    
+        try {
+            const res = await fetch(apiUrl);
+            const data = await res.json();
+    
+            resultsSection.innerHTML = "";
+    
+            if (Object.keys(data).length === 0) {
+                resultsSection.innerHTML = "<p>No players found.</p>";
+                return;
+            }
+    
+            for (const [position, players] of Object.entries(data)) {
+                const group = document.createElement("div");
+                group.innerHTML = `<h3>${position}</h3>`;
+                
+                players.forEach(p => {
+                    const card = document.createElement("div");
+                    card.classList.add("player-card");
+                    card.innerHTML = `
+                        <p><strong>${p.name}</strong> (#${p.uniform_number}) - ${p.team}</p>
+                        <p>Total Points: ${p.points} | Avg: ${p.overall_avg} | Last 5: ${p.last5_avg}</p>
+                        ${p.headshot ? `<img src="${p.headshot}" alt="headshot" width="50"/>` : ""}
+                        <p><a href="${p.profile}" target="_blank">View Profile</a></p>
+                        <hr>
+                    `;
+                    group.appendChild(card);
+                });
+    
+                resultsSection.appendChild(group);
+            }
+    
+        } catch (err) {
+            console.error("API Error:", err);
+            resultsSection.innerHTML = "<p>Error loading player data.</p>";
+        }
+    });
+    </script>
+    
