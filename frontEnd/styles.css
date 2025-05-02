@@ -147,7 +147,7 @@ main {
 .player-points.down { color: #f44336; }
 .player-points.new { color: #2196F3; }
 
-.temp {
+.head {
     text-align: center;
     padding: 2em;
     background-color: #eee;
@@ -278,3 +278,58 @@ footer {
         padding: 1.5em;
     }
 }
+
+body.dark-mode {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .head {
+    background: #333;
+    color: #eee;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background: #000;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .trending-player,
+body.dark-mode .team-roster ul,
+body.dark-mode .results {
+    background: #222;
+    color: #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .player-meta,
+body.dark-mode .search-form input {
+    color: #aaa;
+    background: #333;
+}
+
+body.dark-mode .search-form input::placeholder {
+    color: #777;
+}
+
+#dark-mode-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.head, .feature-card {
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+

@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Players</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="darkMode.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Search Players</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="search.html">Search</a>
-            <a href="team.html">My Team</a>
-        </nav>
-    </header>
+    <div class="page-wrapper">
+        <header>
+            <h1>Search Players</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="search.html">Search</a>
+                <a href="team.html">My Team</a>
+                <button id="dark-mode-toggle">🌙</button>
+            </nav>
+        </header>
 
-    <main>
-        <form class="search-form">
-        <input type="text" placeholder="Search for a player..." />
-        <button type="submit">Search</button>
-        </form>
+        <main>
+            <form class="search-form">
+            <input type="text" placeholder="Search for a player..." />
+            <button type="submit">Search</button>
+            </form>
 
-    <section class="results" id="results"></section>
-    </main>
+        <section class="results" id="results"></section>
+        </main>
 
-    <footer>
-        &copy; 2025 Fantasy Football Central
-    </footer>
-    <script defer src="search.js"></script>
+        <footer>
+            &copy; 2025 Fantasy Football Central
+        </footer>
+        <script defer src="search.js"></script>
+    </div>
 </body>
 </html>
