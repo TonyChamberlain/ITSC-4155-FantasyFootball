@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fantasy Football - Home</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="home.js"></script>
 </head>
 <body>
     <header>
@@ -17,10 +18,36 @@
     </header>
 
     <main>
-        <section class="temp">
+        <section class="head">
         <h2>Welcome to Fantasy Football Central</h2>
-        <p>Create, manage, and dominate your fantasy football team!</p>
+        <p>Create, manage, and dominate your fantasy football league!</p>
         </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>🔍 Player Search</h3>
+                <p>Filter to find your perfect player</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Live Data</h3>
+                <p>Yahoo API integration for real-time stats</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏆 Team Builder</h3>
+                <p>Optimize your lineup with AI suggestions</p>
+            </div>
+        </section>
+
+        <div class="cta-buttons">
+            <a href="search.html" class="cta-primary">Start Searching Players</a>
+            <a href="team.html" class="cta-secondary">View My Team</a>
+        </div>
+
+        <section class="trending">
+            <h2>🔥 Trending This Week</h2>
+            <div class="trending-players-container" id="trending-players"></div>
+        </section>
+
     </main>
 
     <footer>
